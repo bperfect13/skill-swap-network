@@ -1,0 +1,133 @@
+.navbar-custom{
+
+    background:#ffffff;
+
+    padding:18px 0;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#2563EB !important;
+
+    text-decoration:none;
+
+}
+
+.nav-link{
+
+    font-weight:500;
+
+    margin-left:18px;
+
+    color:#334155 !important;
+
+}
+
+.nav-link:hover{
+
+    color:#2563EB !important;
+
+}
+
+.btn-login{
+
+    border:2px solid #2563EB;
+
+    color:#2563EB;
+
+    border-radius:10px;
+
+    padding:10px 25px;
+
+    transition:.3s;
+
+}
+
+.btn-login:hover{
+
+    background:#2563EB;
+
+    color:white;
+
+}
+
+.btn-register{
+
+    background:#2563EB;
+
+    color:white;
+
+    border-radius:10px;
+
+    padding:10px 25px;
+
+    transition:.3s;
+
+}
+
+.btn-register:hover{
+
+    background:#1D4ED8;
+
+    color:white;
+
+}
+
+.profile-avatar{
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    object-position:center center;
+
+    border:2px solid #2563EB;
+
+    display:block;
+
+    transition:.25s ease;
+
+    background:white;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+}
+
+.profile-avatar:hover{
+
+    transform:scale(1.08);
+
+}
+
+.profile-avatar:hover{
+
+    transform:scale(1.08);
+
+}
+
+.profile-dropdown{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-decoration:none;
+
+    padding:0;
+
+}

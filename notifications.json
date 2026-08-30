@@ -1,0 +1,702 @@
+[{
+  "_id": {
+    "$oid": "6a73c8451fe1d4fdc9aab777"
+  },
+  "user_id": "6a50e3c956b3c4b462799da1",
+  "type": "request",
+  "message": "joel sent you a skill swap request.",
+  "related_user_id": "6a50e730ff4ffaaef39ad021",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-05T23:33:25.473Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a73cdd698e9f491bc8d16f3"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "request",
+  "message": "Ryan Dsouza sent you a skill swap request.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-05T23:57:10.801Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a73cf5a5cb862caefc85c78"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "request",
+  "message": "Ryan Dsouza sent you a skill swap request.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-06T00:03:38.439Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a73d173b7ff73d6959214ea"
+  },
+  "user_id": "6a50e3c956b3c4b462799da1",
+  "type": "request",
+  "message": "joel sent you a skill swap request.",
+  "related_user_id": "6a50e730ff4ffaaef39ad021",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-06T00:12:35.104Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a73d32115f61e4bee09f38e"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "request",
+  "message": "Ryan Dsouza sent you a skill swap request.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-06T00:19:45.757Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a73d788dd646e079487ff0d"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "request",
+  "message": "Ryan Dsouza sent you a skill swap request.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-06T00:38:32.293Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a73db187214db94621ec9b3"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "request",
+  "message": "Ryan Dsouza sent you a skill swap request.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-06T00:53:44.412Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7d9a03c362b6dc96990e4f"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "request",
+  "message": "Ryan Dsouza sent you a skill swap request.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T10:18:43.573Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7d9a22c362b6dc96990e50"
+  },
+  "user_id": "6a50e3c956b3c4b462799da1",
+  "type": "accepted",
+  "message": "joel accepted your skill swap request.",
+  "related_user_id": "6a50e730ff4ffaaef39ad021",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T10:19:14.640Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7da6096cc301ffc8bdffe9"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "request",
+  "message": "Ryan Dsouza sent you a skill swap request.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T11:10:01.180Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7da61c6cc301ffc8bdffea"
+  },
+  "user_id": "6a50e3c956b3c4b462799da1",
+  "type": "accepted",
+  "message": "joel accepted your skill swap request.",
+  "related_user_id": "6a50e730ff4ffaaef39ad021",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T11:10:20.865Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7dac24bf2c0dbf6a9c6888"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T11:36:04.893Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7dac49bf2c0dbf6a9c688a"
+  },
+  "user_id": "6a50e3c956b3c4b462799da1",
+  "type": "message",
+  "message": "joel sent you a new message.",
+  "related_user_id": "6a50e730ff4ffaaef39ad021",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T11:36:41.099Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7e0b9e10787202024550de"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T18:23:26.894Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7e0d3494b9a7c8bc60336e"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T18:30:12.430Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7e13e5b818cba712583de3"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T18:58:45.900Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7e15be5796b3209aee768d"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T19:06:38.544Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7e165b5796b3209aee768f"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T19:09:15.182Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7e1837ae78700ceac316ab"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T19:17:11.239Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7e183dae78700ceac316ad"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T19:17:17.207Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7e1994b7bf4386b5094e01"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T19:23:00.675Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a7e26e050a6c49d2b69190f"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-13T20:19:44.660Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a82dbc9d747cfc64dce1446"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-17T10:00:41.718Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91e10408eb1cfa570bd5eb"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-28T19:27:00.722Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91e10f08eb1cfa570bd5ed"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-28T19:27:11.323Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91e425a080c081e5734b96"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-28T19:40:21.004Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91eff0ebba624f5d02dbfe"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-28T20:30:40.861Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91eff7ebba624f5d02dc00"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-28T20:30:47.656Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91f000ebba624f5d02dc02"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-28T20:30:56.249Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a91f501fbef3ae480b007d6"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-28T20:52:17.096Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92a3d607039fd50069e407"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T09:18:14.902Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92a3da07039fd50069e409"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T09:18:18.577Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92e5bda03bb5abb90e0ccb"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T13:59:25.362Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92e8b8eeaa31a7f7b10dac"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T14:12:08.310Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92ea8c2e9cb374eb50740b"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T14:19:56.722Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92ea922e9cb374eb50740d"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T14:20:02.719Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92eabe2e9cb374eb50740f"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "request",
+  "message": "Sam sent you a skill swap request.",
+  "related_user_id": "6a92eaaf2e9cb374eb50740e",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T14:20:46.399Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92eacb2e9cb374eb507411"
+  },
+  "user_id": "6a92eaaf2e9cb374eb50740e",
+  "type": "accepted",
+  "message": "joel accepted your skill swap request.",
+  "related_user_id": "6a50e730ff4ffaaef39ad021",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T14:20:59.298Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92ead82e9cb374eb507413"
+  },
+  "user_id": "6a92eaaf2e9cb374eb50740e",
+  "type": "message",
+  "message": "joel sent you a new message.",
+  "related_user_id": "6a50e730ff4ffaaef39ad021",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T14:21:12.513Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92eaff2e9cb374eb507415"
+  },
+  "user_id": "6a92eaaf2e9cb374eb50740e",
+  "type": "message",
+  "message": "joel sent you a new message.",
+  "related_user_id": "6a50e730ff4ffaaef39ad021",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T14:21:51.189Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92edfe0f4c8c6b0fe7f8b6"
+  },
+  "user_id": "6a92eaaf2e9cb374eb50740e",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T14:34:38.011Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92ee66160ee07b48298865"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T14:36:22.256Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92ee84160ee07b48298867"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Sam sent you a new message.",
+  "related_user_id": "6a92eaaf2e9cb374eb50740e",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T14:36:52.444Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92f14d403d04c8456e4d4d"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T14:48:45.533Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92f1c9a62a974b43fcabd7"
+  },
+  "user_id": "6a92eaaf2e9cb374eb50740e",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T14:50:49.371Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92f44c7774ea86e6fb27c7"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T15:01:32.314Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92f4527774ea86e6fb27c9"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T15:01:38.600Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92f5e5d06ddaded37067aa"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T15:08:21.779Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92f7a50939c7a2b323e36b"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T15:15:49.703Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92fba3039d2046b06a60e0"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T15:32:51.586Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92fe4423dc87eaf16e8ef4"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T15:44:04.753Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92ffa7fd5238260d4aba3c"
+  },
+  "user_id": "6a50e730ff4ffaaef39ad021",
+  "type": "message",
+  "message": "Ryan Dsouza sent you a new message.",
+  "related_user_id": "6a50e3c956b3c4b462799da1",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T15:49:59.068Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92ffc8fd5238260d4aba3e"
+  },
+  "user_id": "6a92eaaf2e9cb374eb50740e",
+  "type": "message",
+  "message": "joel sent you a new message.",
+  "related_user_id": "6a50e730ff4ffaaef39ad021",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T15:50:32.600Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a92ffd0fd5238260d4aba40"
+  },
+  "user_id": "6a92eaaf2e9cb374eb50740e",
+  "type": "message",
+  "message": "joel sent you a new message.",
+  "related_user_id": "6a50e730ff4ffaaef39ad021",
+  "read": true,
+  "created_at": {
+    "$date": "2026-08-29T15:50:40.934Z"
+  }
+}]

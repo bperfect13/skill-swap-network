@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card shadow p-4">
+
+                <h2 class="text-center mb-4">
+                    Login
+                </h2>
+
+
+                <!-- ============================== -->
+                <!-- Flash Messages -->
+                <!-- ============================== -->
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+
+                    {% if messages %}
+
+                        {% for category, message in messages %}
+
+                            <div class="alert alert-{{ category }}">
+
+                                {{ message }}
+
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+                {% endwith %}
+
+
+                <!-- ============================== -->
+                <!-- Login Form -->
+                <!-- ============================== -->
+
+                <form
+    method="POST"
+    data-loading-text="Logging in..."
+>
+
+
+                    <!-- ============================== -->
+                    <!-- Email -->
+                    <!-- ============================== -->
+
+                    <div class="mb-3">
+
+                        <label
+                            for="email"
+                            class="form-label"
+                        >
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="form-control"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- ============================== -->
+                    <!-- Password -->
+                    <!-- ============================== -->
+
+                    <div class="mb-2">
+
+                        <label
+                            for="loginPassword"
+                            class="form-label"
+                        >
+                            Password
+                        </label>
+
+
+                        <div
+                            class="password-wrapper"
+                            style="
+                                position: relative;
+                            "
+                        >
+
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                name="password"
+                                class="form-control"
+                                placeholder="Enter your password"
+                                required
+                                style="
+                                    padding-right: 45px;
+                                "
+                            >
+
+
+                            <!-- Eye Button -->
+
+                            <button
+                                type="button"
+                                onclick="toggleLoginPassword()"
+                                aria-label="Show or hide password"
+                                style="
+                                    position: absolute;
+                                    right: 0;
+                                    top: 0;
+                                    height: 100%;
+                                    width: 42px;
+                                    border: none;
+                                    background: transparent;
+                                    color: #6b7280;
+                                    cursor: pointer;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                "
+                            >
+
+                                <i
+                                    class="fa-solid fa-eye"
+                                    id="loginPasswordIcon"
+                                ></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ============================== -->
+                    <!-- Forgot Password -->
+                    <!-- ============================== -->
+
+                    <div class="text-end mb-4">
+
+                        <a
+                            href="{{ url_for('main.forgot_password') }}"
+                            class="text-decoration-none"
+                        >
+                            Forgot Password?
+                        </a>
+
+                    </div>
+
+
+                    <!-- ============================== -->
+                    <!-- Login Button -->
+                    <!-- ============================== -->
+
+                    <button
+                        type="submit"
+                        class="btn btn-success w-100"
+                    >
+
+                        Login
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================== -->
+<!-- Password Visibility -->
+<!-- ============================== -->
+
+<script>
+
+function toggleLoginPassword() {
+
+    const passwordInput =
+        document.getElementById(
+            "loginPassword"
+        );
+
+    const passwordIcon =
+        document.getElementById(
+            "loginPasswordIcon"
+        );
+
+
+    if (passwordInput.type === "password") {
+
+        passwordInput.type = "text";
+
+        passwordIcon.classList.remove(
+            "fa-eye"
+        );
+
+        passwordIcon.classList.add(
+            "fa-eye-slash"
+        );
+
+    } else {
+
+        passwordInput.type = "password";
+
+        passwordIcon.classList.remove(
+            "fa-eye-slash"
+        );
+
+        passwordIcon.classList.add(
+            "fa-eye"
+        );
+
+    }
+
+}
+
+</script>
+
+{% endblock %}

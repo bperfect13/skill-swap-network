@@ -1,0 +1,660 @@
+/* ============================================================
+   SKILLSWAP - RESPONSIVE DESIGN
+   ============================================================ */
+
+
+/* ============================================================
+   GENERAL RESPONSIVE RULES
+   ============================================================ */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* ============================================================
+   TABLET AND SMALL LAPTOPS
+   992px AND BELOW
+   ============================================================ */
+
+@media (max-width: 992px) {
+
+    /* --------------------------------
+       Navbar
+       -------------------------------- */
+
+    .navbar-custom .navbar-nav {
+        margin-top: 15px;
+        align-items: stretch;
+    }
+
+    .navbar-custom .nav-item {
+        margin-left: 0 !important;
+        margin-bottom: 5px;
+    }
+
+    .navbar-custom .nav-link {
+        padding: 10px 12px;
+    }
+
+    .navbar-custom .btn {
+        margin-left: 0 !important;
+        margin-top: 5px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-custom .dropdown-menu {
+        width: 100%;
+    }
+
+
+    /* --------------------------------
+       Main Containers
+       -------------------------------- */
+
+    .container {
+        max-width: 95%;
+    }
+
+
+    /* --------------------------------
+       Dashboard
+       -------------------------------- */
+
+    .dashboard-card {
+        margin-bottom: 20px;
+    }
+
+    .row > [class*="col-md-6"] {
+        margin-bottom: 20px;
+    }
+
+
+    /* --------------------------------
+       Connection Buttons
+       -------------------------------- */
+
+    .d-flex.gap-2 {
+        flex-wrap: wrap;
+    }
+
+    .d-flex.gap-2 .btn,
+    .d-flex.gap-2 form {
+        margin-bottom: 5px;
+    }
+
+
+    /* --------------------------------
+       Chat
+       -------------------------------- */
+
+    #chatMessages {
+        height: 400px !important;
+    }
+
+
+    /* --------------------------------
+       Admin Table
+       -------------------------------- */
+
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-responsive table {
+        min-width: 700px;
+    }
+
+}
+
+
+/* ============================================================
+   TABLETS
+   768px AND BELOW
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    /* --------------------------------
+       Headings
+       -------------------------------- */
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.65rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+
+    /* --------------------------------
+       Container spacing
+       -------------------------------- */
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+
+    /* --------------------------------
+       Navbar
+       -------------------------------- */
+
+    .navbar-custom .navbar-brand {
+        font-size: 1.25rem;
+    }
+
+    .navbar-custom .profile-avatar {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    /* --------------------------------
+       Dashboard
+       -------------------------------- */
+
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .row {
+        --bs-gutter-y: 20px;
+    }
+
+
+    /* --------------------------------
+       Dashboard Skills
+       -------------------------------- */
+
+    .list-group-item {
+        word-break: break-word;
+    }
+
+
+    /* --------------------------------
+       Incoming Requests
+       -------------------------------- */
+
+    .alert {
+        word-break: break-word;
+    }
+
+    .alert form {
+        margin-top: 5px;
+    }
+
+
+    /* --------------------------------
+       Buttons
+       -------------------------------- */
+
+    .btn {
+        white-space: normal;
+    }
+
+
+    /* --------------------------------
+       Profile
+       -------------------------------- */
+
+    .profile-actions,
+    .d-flex.gap-2 {
+        flex-wrap: wrap;
+    }
+
+
+    /* --------------------------------
+       Chat
+       -------------------------------- */
+
+    #chatMessages {
+        height: 380px !important;
+        padding: 15px !important;
+    }
+
+    .message-bubble {
+        max-width: 85% !important;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+    .message-text {
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+    .message-time {
+        font-size: 11px;
+    }
+
+    .card-footer .input-group {
+        flex-wrap: nowrap;
+    }
+
+    .card-footer .form-control {
+        min-width: 0;
+    }
+
+
+    /* --------------------------------
+       Notifications
+       -------------------------------- */
+
+    .notification-card {
+        margin-bottom: 12px !important;
+    }
+
+    .notification-message {
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+
+    /* --------------------------------
+       Messages / Conversation List
+       -------------------------------- */
+
+    .conversation-card {
+        width: 100%;
+    }
+
+
+    /* --------------------------------
+       Admin
+       -------------------------------- */
+
+    .table-responsive {
+        border-radius: 8px;
+    }
+
+    .admin-stat-card {
+        margin-bottom: 15px;
+    }
+
+
+    /* --------------------------------
+       Login / Register
+       -------------------------------- */
+
+    .login-card,
+    .register-card {
+        width: 100%;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE PHONES
+   576px AND BELOW
+   ============================================================ */
+
+@media (max-width: 576px) {
+
+    /* --------------------------------
+       General
+       -------------------------------- */
+
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+
+    /* --------------------------------
+       Navbar
+       -------------------------------- */
+
+    .navbar-custom {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .navbar-custom .navbar-brand {
+        font-size: 1.15rem;
+    }
+
+    .navbar-custom .navbar-nav {
+        width: 100%;
+    }
+
+    .navbar-custom .nav-item {
+        width: 100%;
+    }
+
+    .navbar-custom .nav-link {
+        width: 100%;
+        padding: 9px 10px;
+    }
+
+    .navbar-custom .navbar-collapse {
+        padding-top: 10px;
+    }
+
+    .navbar-custom .dropdown-menu {
+        width: 100%;
+    }
+
+
+    /* --------------------------------
+       Page spacing
+       -------------------------------- */
+
+    .py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+
+    /* --------------------------------
+       Cards
+       -------------------------------- */
+
+    .card {
+        border-radius: 10px;
+    }
+
+    .card-body {
+        padding: 18px !important;
+    }
+
+
+    /* --------------------------------
+       Headings
+       -------------------------------- */
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+
+    /* --------------------------------
+       Dashboard
+       -------------------------------- */
+
+    .row > [class*="col-"] {
+        width: 100%;
+    }
+
+    .dashboard-card {
+        width: 100%;
+    }
+
+
+    /* --------------------------------
+       Incoming Requests
+       -------------------------------- */
+
+    .alert-info {
+        padding: 15px;
+    }
+
+    .alert-info form {
+        display: block !important;
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    .alert-info form button {
+        width: 100%;
+    }
+
+
+    /* --------------------------------
+       Connections
+       -------------------------------- */
+
+    .d-flex.gap-2 {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .d-flex.gap-2 .btn,
+    .d-flex.gap-2 form,
+    .d-flex.gap-2 form .btn {
+        width: 100%;
+    }
+
+
+    /* --------------------------------
+       Profile
+       -------------------------------- */
+
+    .profile-avatar {
+        width: 45px;
+        height: 45px;
+    }
+
+    .profile-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .profile-actions .btn {
+        width: 100%;
+        margin-left: 0 !important;
+    }
+
+
+    /* --------------------------------
+       Chat
+       -------------------------------- */
+
+    #chatMessages {
+        height: 350px !important;
+        padding: 12px !important;
+    }
+
+    .message-bubble {
+        max-width: 90% !important;
+        padding: 10px !important;
+    }
+
+    .message-text {
+        font-size: 14px;
+    }
+
+    .message-time {
+        font-size: 10px;
+    }
+
+    .chat-date-separator {
+        margin: 15px 0 10px 0;
+    }
+
+    .chat-date-separator span {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+
+
+    /* --------------------------------
+       Chat Input
+       -------------------------------- */
+
+    .card-footer {
+        padding: 10px !important;
+    }
+
+    .card-footer .input-group {
+        width: 100%;
+    }
+
+    .card-footer .btn {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+
+    /* --------------------------------
+       Notifications
+       -------------------------------- */
+
+    .notification-card .card-body {
+        padding: 14px !important;
+    }
+
+    .notification-message {
+        font-size: 14px;
+    }
+
+    .notification-time {
+        font-size: 12px;
+    }
+
+
+    /* --------------------------------
+       Messages
+       -------------------------------- */
+
+    .conversation-card {
+        width: 100%;
+    }
+
+
+    /* --------------------------------
+       Admin
+       -------------------------------- */
+
+    .admin-stat-card {
+        width: 100%;
+    }
+
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+
+    /* --------------------------------
+       Login / Register
+       -------------------------------- */
+
+    .login-card,
+    .register-card {
+        width: 100%;
+    }
+
+    .login-card .card-body,
+    .register-card .card-body {
+        padding: 20px !important;
+    }
+
+    .login-card .btn,
+    .register-card .btn {
+        width: 100%;
+    }
+
+
+    /* --------------------------------
+       Modal
+       -------------------------------- */
+
+    .modal-dialog {
+        margin: 10px;
+    }
+
+    .modal-body {
+        padding: 25px !important;
+    }
+
+
+    /* --------------------------------
+       Footer
+       -------------------------------- */
+
+    footer {
+        text-align: center;
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+   400px AND BELOW
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+    body {
+        font-size: 13px;
+    }
+
+    .navbar-custom .navbar-brand {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .card-body {
+        padding: 15px !important;
+    }
+
+    #chatMessages {
+        height: 320px !important;
+    }
+
+    .message-bubble {
+        max-width: 94% !important;
+    }
+
+    .card-footer .btn {
+        font-size: 13px;
+    }
+
+}
+
+/* ============================================================
+   DISABLE HOVER LIFT ON TOUCH DEVICES
+   ============================================================ */
+
+@media (hover: none) {
+
+    .card:hover,
+    .btn:hover,
+    .profile-avatar:hover,
+    .message-bubble:hover {
+
+        transform: none;
+
+    }
+
+}

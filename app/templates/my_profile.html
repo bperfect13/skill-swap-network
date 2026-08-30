@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow-lg">
+
+        <div class="card-body">
+
+            <div class="text-center mb-4">
+
+    <img
+        src="{{ url_for('static', filename='uploads/profile_pictures/' + user.get('profile_picture','default.png')) }}"
+        class="rounded-circle border"
+        width="180"
+        height="180"
+        style="object-fit:cover;">
+
+</div>
+
+            <hr>
+
+            <p><strong>Name:</strong> {{ user.name }}</p>
+
+            <p><strong>Email:</strong> {{ user.email }}</p>
+
+            <p><strong>Phone:</strong> {{ user.phone }}</p>
+
+            <p><strong>Location:</strong> {{ user.location }}</p>
+
+            <p><strong>Profession:</strong> {{ user.profession }}</p>
+
+            <p><strong>Bio:</strong> {{ user.bio }}</p>
+
+            <p><strong>LinkedIn:</strong> {{ user.linkedin }}</p>
+
+            <p><strong>GitHub:</strong> {{ user.github }}</p>
+
+            <p><strong>Portfolio:</strong> {{ user.portfolio }}</p>
+
+            <hr>
+
+            <h4>Skills Offered</h4>
+
+            <ul>
+
+                {% for skill in user.skills_offer %}
+
+                    <li>{{ skill }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+            <h4>Skills Needed</h4>
+
+            <ul>
+
+                {% for skill in user.skills_need %}
+
+                    <li>{{ skill }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+            <hr>
+
+            <a
+                href="{{ url_for('main.edit_profile') }}"
+                class="btn btn-primary">
+
+                Edit Profile
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}  

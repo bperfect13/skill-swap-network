@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h2>
+        Welcome, {{ user.name }}
+    </h2>
+
+    <a href="{{ url_for('main.edit_profile') }}"
+       class="btn btn-warning mb-3">
+
+
+        <i class="fa-solid fa-user-pen"></i>
+        Edit Profile
+
+    </a>
+
+    <a
+    href="{{ url_for('main.swaps') }}"
+    class="btn btn-primary mb-3 ms-2"
+>
+
+    <i class="fa-solid fa-handshake me-1"></i>
+
+    My Skill Swaps
+
+</a>
+
+    <hr>
+
+    <div class="row">
+
+        <!-- Skills I Offer -->
+
+        <div class="col-md-6">
+
+            <div class="card shadow p-4">
+
+                <h4>Skills I Offer</h4>
+
+                <ul class="list-group mt-3">
+
+                    {% for skill in user.skills_offer %}
+
+                    <li class="list-group-item">
+                        {{ skill }}
+                    </li>
+
+                    {% else %}
+
+                    <li class="list-group-item text-muted">
+                        No skills added yet.
+                    </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- Skills I Need -->
+
+        <div class="col-md-6">
+
+            <div class="card shadow p-4">
+
+                <h4>Skills I Need</h4>
+
+                <ul class="list-group mt-3">
+
+                    {% for skill in user.skills_need %}
+
+                    <li class="list-group-item">
+                        {{ skill }}
+                    </li>
+
+                    {% else %}
+
+                    <li class="list-group-item text-muted">
+                        No skills added yet.
+                    </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr class="my-5">
+
+    <!-- Incoming Requests -->
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h3>
+                Incoming Requests
+            </h3>
+
+            {% if user.requests %}
+
+                {% for req in user.requests %}
+
+                <div class="alert alert-info">
+
+                    <h5>{{ req.sender_name }}</h5>
+
+                    <p>{{ req.sender_email }}</p>
+
+                    <form
+    action="{{ url_for('main.accept_request') }}"
+    method="POST"
+    class="d-inline"
+    data-loading-text="Accepting..."
+>
+
+                        <input
+                            type="hidden"
+                            name="sender_id"
+                            value="{{ req.sender_id }}">
+
+                        <button class="btn btn-success btn-sm">
+
+                            Accept
+
+                        </button>
+
+                    </form>
+
+                    <form
+    action="{{ url_for('main.reject_request') }}"
+    method="POST"
+    class="d-inline"
+    data-loading-text="Rejecting..."
+>
+
+                        <input
+                            type="hidden"
+                            name="sender_id"
+                            value="{{ req.sender_id }}">
+
+                        <button class="btn btn-danger btn-sm">
+
+                            Reject
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>No Requests Yet.</p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <hr class="my-5">
+
+    <!-- My Connections -->
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h3>
+                🤝 My Connections
+            </h3>
+
+            {% if connections %}
+
+                {% for connection in connections %}
+
+                <div class="card mb-3 shadow-sm">
+
+                    <div class="card-body">
+
+                        <h5>{{ connection.name }}</h5>
+
+                        <p class="text-muted">
+
+                            {{ connection.email }}
+
+                        </p>
+
+                        <div class="d-flex gap-2">
+
+    <!-- Message Button -->
+
+    <a
+        href="{{ url_for('main.chat', user_id=connection._id) }}"
+        class="btn btn-success btn-sm"
+    >
+
+        <i class="fa-solid fa-message me-1"></i>
+
+        Message
+
+    </a>
+
+
+    <!-- Cancel Connection -->
+
+    <form
+        action="{{ url_for('main.cancel_connection') }}"
+        method="POST"
+    >
+
+        <input
+            type="hidden"
+            name="connection_id"
+            value="{{ connection._id }}"
+        >
+
+        <button
+            class="btn btn-danger btn-sm"
+        >
+
+            Cancel Connection
+
+        </button>
+
+    </form>
+
+</div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+    <div class="empty-state">
+
+        <div class="empty-state-icon">
+
+            🤝
+
+        </div>
+
+        <div class="empty-state-title">
+
+            No Connections Yet
+
+        </div>
+
+        <p class="empty-state-text">
+
+            Connect with people who have skills
+            you can learn from and share your own
+            skills with others.
+
+        </p>
+
+        <a
+            href="{{ url_for('main.browse') }}"
+            class="btn btn-primary"
+        >
+
+            <i class="fa-solid fa-magnifying-glass me-1"></i>
+
+            Browse Skills
+
+        </a>
+
+    </div>
+
+{% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

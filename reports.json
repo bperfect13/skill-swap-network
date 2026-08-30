@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "6a90cfaa1275e2a95460f79a"
+  },
+  "reporter_id": "6a50e730ff4ffaaef39ad021",
+  "reporter_name": "joel",
+  "reported_user_id": "6a50e9aedb90294252897555",
+  "reported_user_name": "vishal Kandu",
+  "reason": "Spam",
+  "details": "efvevveve",
+  "status": "completed",
+  "created_at": {
+    "$date": "2026-08-28T00:00:42.314Z"
+  },
+  "resolution": "User deleted by admin",
+  "resolved_at": {
+    "$date": "2026-08-28T00:12:33.214Z"
+  }
+}]

@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}
+Rate {{ reviewed_user_name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-7">
+
+            <div class="card shadow">
+
+                <div class="card-body p-4">
+
+                    <h3 class="mb-4">
+                        <i class="fa-solid fa-star text-warning me-2"></i>
+                        Rate {{ reviewed_user_name }}
+                    </h3>
+
+                    <p class="text-muted">
+                        How was your skill swap experience?
+                    </p>
+
+                    <form
+    method="POST"
+    action="{{ url_for(
+        'main.rate_swap',
+        swap_id=swap._id
+    ) }}"
+    data-loading-text="Submitting Review..."
+>
+
+                        <!-- Rating -->
+
+                        <div class="mb-4">
+
+                            <label class="form-label fw-bold">
+                                Rating
+                            </label>
+
+                            <select
+                                name="rating"
+                                class="form-select"
+                                required
+                            >
+
+                                <option value="">
+                                    Select rating
+                                </option>
+
+                                <option value="5">
+                                    ⭐⭐⭐⭐⭐ Excellent
+                                </option>
+
+                                <option value="4">
+                                    ⭐⭐⭐⭐ Great
+                                </option>
+
+                                <option value="3">
+                                    ⭐⭐⭐ Good
+                                </option>
+
+                                <option value="2">
+                                    ⭐⭐ Average
+                                </option>
+
+                                <option value="1">
+                                    ⭐ Poor
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Review -->
+
+                        <div class="mb-4">
+
+                            <label class="form-label fw-bold">
+                                Review
+                            </label>
+
+                            <textarea
+                                name="review"
+                                class="form-control"
+                                rows="5"
+                                placeholder="Share your experience..."
+                            ></textarea>
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+
+                            <i class="fa-solid fa-paper-plane me-1"></i>
+
+                            Submit Review
+
+                        </button>
+
+                        <a
+                            href="{{ url_for('main.swaps') }}"
+                            class="btn btn-secondary ms-2"
+                        >
+                            Cancel
+                        </a>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

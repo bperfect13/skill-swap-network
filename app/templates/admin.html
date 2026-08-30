@@ -1,0 +1,727 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- ================================= -->
+    <!-- Admin Header -->
+    <!-- ================================= -->
+
+    <div class="mb-4">
+
+        <h2 class="fw-bold mb-1">
+
+            <i class="fa-solid fa-shield-halved me-2"></i>
+
+            Admin Dashboard
+
+        </h2>
+
+        <p class="text-muted mb-0">
+
+            Manage SkillSwap platform activity.
+
+        </p>
+
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- Statistics -->
+    <!-- ================================= -->
+
+    <div class="row g-4">
+
+        <!-- Total Users -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i
+                        class="fa-solid fa-users text-primary"
+                        style="font-size:40px;"
+                    ></i>
+
+                    <h6 class="text-muted mt-3">
+                        Total Users
+                    </h6>
+
+                    <h2 class="fw-bold">
+                        {{ total_users }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Total Connections -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i
+                        class="fa-solid fa-user-group text-success"
+                        style="font-size:40px;"
+                    ></i>
+
+                    <h6 class="text-muted mt-3">
+                        Total Connections
+                    </h6>
+
+                    <h2 class="fw-bold">
+                        {{ total_connections }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Total Swaps -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <i
+                        class="fa-solid fa-handshake text-warning"
+                        style="font-size:40px;"
+                    ></i>
+
+                    <h6 class="text-muted mt-3">
+                        Total Swaps
+                    </h6>
+
+                    <h2 class="fw-bold">
+                        {{ total_swaps }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- Manage Users -->
+    <!-- ================================= -->
+
+    <div class="card shadow-sm border-0 mt-5">
+
+        <div class="card-body p-4">
+
+            <h4 class="fw-bold mb-4">
+
+                <i class="fa-solid fa-users me-2"></i>
+
+                Manage Users
+
+            </h4>
+
+
+            {% if normal_users %}
+
+                <div class="table-responsive">
+
+                    <table class="table align-middle">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    User
+                                </th>
+
+                                <th>
+                                    Email
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for normal_user in normal_users %}
+
+                                <tr>
+
+                                    <td>
+
+                                        <div
+                                            class="d-flex align-items-center"
+                                        >
+
+                                            <img
+                                                src="{{ url_for(
+                                                    'static',
+                                                    filename=
+                                                    'uploads/profile_pictures/' +
+                                                    normal_user.get(
+                                                        'profile_picture',
+                                                        'default.png'
+                                                    )
+                                                ) }}"
+                                                class="rounded-circle me-2"
+                                                style="
+                                                    width:40px;
+                                                    height:40px;
+                                                    object-fit:cover;
+                                                "
+                                                alt="Profile"
+                                            >
+
+                                            <strong>
+                                                {{ normal_user.name }}
+                                            </strong>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        {{ normal_user.email }}
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <div class="d-flex gap-2">
+
+                                            <!-- Message -->
+
+                                            <a
+                                                href="{{ url_for(
+                                                    'main.chat',
+                                                    user_id=normal_user._id
+                                                ) }}"
+                                                class="btn btn-success btn-sm"
+                                            >
+
+                                                <i
+                                                    class="fa-solid fa-message me-1"
+                                                ></i>
+
+                                                Message
+
+                                            </a>
+
+
+                                            <!-- Delete -->
+
+                                            <button
+                                                type="button"
+                                                class="btn btn-danger btn-sm"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteUserModal{{ normal_user._id }}"
+                                            >
+
+                                                <i
+                                                    class="fa-solid fa-trash me-1"
+                                                ></i>
+
+                                                Delete
+
+                                            </button>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            {% else %}
+
+                <div class="empty-state py-4">
+
+                    <div class="empty-state-icon">
+
+                        👥
+
+                    </div>
+
+                    <div class="empty-state-title">
+
+                        No Users Found
+
+                    </div>
+
+                    <p class="empty-state-text mb-0">
+
+                        There are currently no normal users
+                        available to manage.
+
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- Manage Reports -->
+    <!-- ================================= -->
+
+    <div class="card shadow-sm border-0 mt-5">
+
+        <div class="card-body p-4">
+
+            <h4 class="fw-bold mb-4">
+
+                <i class="fa-solid fa-flag me-2"></i>
+
+                Reports
+
+            </h4>
+
+
+            {% if reports %}
+
+                <div class="table-responsive">
+
+                    <table class="table align-middle">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Reporter
+                                </th>
+
+                                <th>
+                                    Reported User
+                                </th>
+
+                                <th>
+                                    Reason
+                                </th>
+
+                                <th>
+                                    Details
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for report in reports %}
+
+                                <tr>
+
+                                    <td>
+                                        {{ report.reporter_name }}
+                                    </td>
+
+
+                                    <td>
+                                        {{ report.reported_user_name }}
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="badge bg-danger">
+
+                                            {{ report.reason }}
+
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+                                        {{ report.details }}
+                                    </td>
+
+
+                                    <td>
+
+                                        {% if report.status == "pending" %}
+
+                                            <span
+                                                class="badge bg-warning text-dark"
+                                            >
+
+                                                Pending
+
+                                            </span>
+
+
+                                        {% elif report.status == "completed" %}
+
+                                            <button
+                                                type="button"
+                                                class="btn btn-success btn-sm"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#reportCompletedModal{{ report._id }}"
+                                            >
+
+                                                <i
+                                                    class="fa-solid fa-circle-check me-1"
+                                                ></i>
+
+                                                Completed
+
+                                            </button>
+
+
+                                        {% else %}
+
+                                            <span class="badge bg-secondary">
+
+                                                {{ report.status }}
+
+                                            </span>
+
+                                        {% endif %}
+
+                                    </td>
+
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            {% else %}
+
+                <div class="empty-state">
+
+                    <div class="empty-state-icon">
+
+                        🚩
+
+                    </div>
+
+                    <div class="empty-state-title">
+
+                        No Reports Yet
+
+                    </div>
+
+                    <p class="empty-state-text">
+
+                        User reports submitted to the platform
+                        will appear here.
+
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================================= -->
+<!-- DELETE USER MODALS                                        -->
+<!-- IMPORTANT: These are OUTSIDE the table and container.    -->
+<!-- ========================================================= -->
+
+{% for normal_user in normal_users %}
+
+    <div
+        class="modal fade"
+        id="deleteUserModal{{ normal_user._id }}"
+        tabindex="-1"
+        aria-labelledby="deleteUserLabel{{ normal_user._id }}"
+        aria-hidden="true"
+    >
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content border-0 shadow-lg rounded-4">
+
+                <!-- Header -->
+
+                <div class="modal-header border-0">
+
+                    <h5
+                        class="modal-title fw-bold"
+                        id="deleteUserLabel{{ normal_user._id }}"
+                    >
+
+                        <i
+                            class="fa-solid fa-triangle-exclamation text-danger me-2"
+                        ></i>
+
+                        Delete User?
+
+                    </h5>
+
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+
+                </div>
+
+
+                <!-- Body -->
+
+                <div class="modal-body text-center px-4 pb-4">
+
+                    <div class="mb-3">
+
+                        <i
+                            class="fa-solid fa-circle-exclamation text-danger"
+                            style="font-size:60px;"
+                        ></i>
+
+                    </div>
+
+
+                    <h5 class="fw-bold">
+
+                        Are you sure you want to delete
+                        {{ normal_user.name }}?
+
+                    </h5>
+
+
+                    <p class="text-muted mb-0">
+
+                        This action cannot be undone.
+                        All related data for this user
+                        will also be removed.
+
+                    </p>
+
+                </div>
+
+
+                <!-- Footer -->
+
+                <div
+                    class="modal-footer border-0 justify-content-center pb-4"
+                >
+
+                    <!-- No -->
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary px-4"
+                        data-bs-dismiss="modal"
+                    >
+
+                        No
+
+                    </button>
+
+
+                    <!-- Yes, Delete -->
+
+                    <form
+                        action="{{ url_for(
+                            'main.admin_delete_user',
+                            user_id=normal_user._id
+                        ) }}"
+                        method="POST"
+                        class="d-inline"
+                        data-loading-text="Deleting..."
+                    >
+
+                        <button
+                            type="submit"
+                            class="btn btn-danger px-4"
+                        >
+
+                            <i
+                                class="fa-solid fa-trash me-1"
+                            ></i>
+
+                            Yes, Delete
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endfor %}
+
+
+<!-- ========================================================= -->
+<!-- COMPLETED REPORT MODALS                                   -->
+<!-- IMPORTANT: These are OUTSIDE the table and cards.        -->
+<!-- ========================================================= -->
+
+{% for report in reports %}
+
+    {% if report.status == "completed" %}
+
+        <div
+            class="modal fade"
+            id="reportCompletedModal{{ report._id }}"
+            tabindex="-1"
+            aria-labelledby="reportCompletedLabel{{ report._id }}"
+            aria-hidden="true"
+        >
+
+            <div class="modal-dialog modal-dialog-centered">
+
+                <div
+                    class="modal-content border-0 shadow-lg rounded-4"
+                >
+
+                    <!-- Header -->
+
+                    <div class="modal-header border-0">
+
+                        <h5
+                            class="modal-title fw-bold"
+                            id="reportCompletedLabel{{ report._id }}"
+                        >
+
+                            <i
+                                class="fa-solid fa-circle-check text-success me-2"
+                            ></i>
+
+                            Report Completed
+
+                        </h5>
+
+
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+
+                    </div>
+
+
+                    <!-- Body -->
+
+                    <div class="modal-body text-center p-4">
+
+                        <div class="mb-3">
+
+                            <i
+                                class="fa-solid fa-user-slash text-success"
+                                style="font-size:60px;"
+                            ></i>
+
+                        </div>
+
+
+                        <h5 class="fw-bold mb-2">
+
+                            User deleted by admin
+
+                        </h5>
+
+
+                        <p class="text-muted mb-0">
+
+                            The reported user
+
+                            <strong>
+                                {{ report.reported_user_name }}
+                            </strong>
+
+                            has been removed from the platform.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- Footer -->
+
+                    <div
+                        class="modal-footer border-0 justify-content-center pb-4"
+                    >
+
+                        <button
+                            type="button"
+                            class="btn btn-success px-4"
+                            data-bs-dismiss="modal"
+                        >
+
+                            OK
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% endif %}
+
+{% endfor %}
+
+
+{% endblock %}

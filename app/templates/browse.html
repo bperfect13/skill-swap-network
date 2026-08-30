@@ -1,0 +1,422 @@
+{% extends "base.html" %}
+
+{% block title %}
+Browse Skills
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <form method="GET" action="{{ url_for('main.browse') }}" class="mb-4">
+
+    <div class="row g-3">
+
+        <!-- Search -->
+
+        <div class="col-md-4">
+
+            <input
+    type="text"
+    name="search"
+    class="form-control"
+    placeholder="Search by name or skill..."
+    value="{{ search }}"
+>
+
+        </div>
+
+        <!-- Offered Skill -->
+
+        <div class="col-md-2">
+
+           <select
+    name="offer_skill"
+    class="form-select"
+>
+
+    <option value="">Offered Skill</option>
+
+    {% for skill in offer_skills %}
+
+    <option
+        value="{{ skill }}"
+        {% if offer_skill == skill %}selected{% endif %}
+    >
+        {{ skill }}
+    </option>
+
+    {% endfor %}
+
+</select>
+
+        </div>
+
+        <!-- Needed Skill -->
+
+        <div class="col-md-2">
+
+           <select
+    name="need_skill"
+    class="form-select"
+>
+
+    <option value="">Needed Skill</option>
+
+    {% for skill in need_skills %}
+
+    <option
+        value="{{ skill }}"
+        {% if need_skill == skill %}selected{% endif %}
+    >
+        {{ skill }}
+    </option>
+
+    {% endfor %}
+
+</select>
+
+        </div>
+
+        <!-- Location -->
+
+        <div class="col-md-2">
+
+           <select
+    name="location"
+    class="form-select"
+>
+
+    <option value="">Location</option>
+
+    {% for loc in locations %}
+
+    <option
+        value="{{ loc }}"
+        {% if location == loc %}selected{% endif %}
+    >
+        {{ loc }}
+    </option>
+
+    {% endfor %}
+
+</select>
+
+        </div>
+
+        <!-- Profession -->
+
+        <div class="col-md-2">
+
+           <select
+    name="profession"
+    class="form-select"
+>
+
+    <option value="">Profession</option>
+
+    {% for prof in professions %}
+
+    <option
+        value="{{ prof }}"
+        {% if profession == prof %}selected{% endif %}
+    >
+        {{ prof }}
+    </option>
+
+    {% endfor %}
+
+</select>
+        </div>
+
+    </div>
+
+    <div class="row mt-3">
+
+        <div class="col-md-3">
+
+           <select
+    name="sort"
+    class="form-select"
+>
+
+    <option value="">
+        Sort By
+    </option>
+
+    <option
+        value="match_desc"
+        {% if sort == "match_desc" %}selected{% endif %}
+    >
+        Highest Match
+    </option>
+
+    <option
+        value="match_asc"
+        {% if sort == "match_asc" %}selected{% endif %}
+    >
+        Lowest Match
+    </option>
+
+    <option
+        value="name_asc"
+        {% if sort == "name_asc" %}selected{% endif %}
+    >
+        Name (A-Z)
+    </option>
+
+    <option
+        value="name_desc"
+        {% if sort == "name_desc" %}selected{% endif %}
+    >
+        Name (Z-A)
+    </option>
+
+</select>
+
+
+        </div>
+
+        <div class="col-md-3">
+
+            <button
+                type="submit"
+                class="btn btn-primary w-100"
+            >
+
+                <i class="fas fa-search"></i>
+
+                Search
+
+            </button>
+
+        </div>
+
+    </div>
+
+</form>
+
+    <h2 class="mb-4">
+        Browse Skills
+    </h2>
+
+    {% if users %}
+
+        {% for user in users %}
+
+        <div class="card shadow-lg mb-4 border-0">
+
+            <div class="card-body">
+
+                <div class="row align-items-center">
+
+                    <div class="col-md-2 text-center">
+
+                       <img
+    src="{{ url_for(
+        'static',
+        filename='uploads/profile_pictures/' +
+        user.user.get('profile_picture', 'default.png')
+    ) }}"
+                            class="rounded-circle shadow"
+                            style="width:120px;height:120px;object-fit:cover;">
+
+                    </div>
+
+                    <div class="col-md-10">
+
+                        <h3 class="mb-1">
+                            {{ user.user.name }}
+                        </h3>
+
+                        <p class="text-muted mb-2">
+
+                            📍 {{ user.user.location if user.user.location else "Location not added" }}
+
+                            <br>
+
+                            💼 {{ user.user.profession if user.user.profession else "Profession not added" }}
+
+                        </p>
+
+                        {% if user.percentage >= 80 %}
+
+                            <span class="badge bg-success fs-6">
+                                ⭐ Excellent Match ({{ user.percentage }}%)
+                            </span>
+
+                        {% elif user.percentage >= 50 %}
+
+                            <span class="badge bg-warning text-dark fs-6">
+                                👍 Good Match ({{ user.percentage }}%)
+                            </span>
+
+                        {% else %}
+
+                            <span class="badge bg-danger fs-6">
+                                ⚡ Partial Match ({{ user.percentage }}%)
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <h5 class="text-success">
+
+                            Skills Offered
+
+                        </h5>
+
+                        {% if user.user.skills_offer %}
+
+                            <ul>
+
+                                {% for skill in user.user.skills_offer %}
+
+                                    <li>{{ skill }}</li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        {% else %}
+
+                            <p>No skills added.</p>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <h5 class="text-primary">
+
+                            Skills Needed
+
+                        </h5>
+
+                        {% if user.user.skills_need %}
+
+                            <ul>
+
+                                {% for skill in user.user.skills_need %}
+
+                                    <li>{{ skill }}</li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        {% else %}
+
+                            <p>No skills added.</p>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <h6 class="text-success">
+
+                            ✅ They Can Teach You
+
+                        </h6>
+
+                        {% if user.offer_match %}
+
+                            <ul>
+
+                                {% for skill in user.offer_match %}
+
+                                    <li>{{ skill }}</li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        {% else %}
+
+                            <p class="text-muted">
+                                No matching skills.
+                            </p>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <h6 class="text-primary">
+
+                            🎯 They Need From You
+
+                        </h6>
+
+                        {% if user.need_match %}
+
+                            <ul>
+
+                                {% for skill in user.need_match %}
+
+                                    <li>{{ skill }}</li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        {% else %}
+
+                            <p class="text-muted">
+                                No matching skills.
+                            </p>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <a
+                    href="{{ url_for('main.profile', user_id=user.user._id) }}"
+                    class="btn btn-primary">
+
+                    View Profile
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="alert alert-warning">
+
+            No users available.
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

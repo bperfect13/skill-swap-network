@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow-lg">
+
+        <div class="card-body">
+
+            <h2>{{ profile.name }}</h2>
+
+            <!-- ================================= -->
+<!-- Ratings -->
+<!-- ================================= -->
+
+<div class="mt-3 mb-4">
+
+    {% if reviews %}
+
+        <div class="d-flex align-items-center">
+
+            <span class="fs-4 me-2">
+                ⭐
+            </span>
+
+            <strong class="fs-4">
+                {{ average_rating }}
+            </strong>
+
+            <span class="text-muted ms-2">
+                / 5
+            </span>
+
+            <span class="text-muted ms-2">
+                ({{ reviews|length }}
+                {{ "review" if reviews|length == 1 else "reviews" }})
+            </span>
+
+        </div>
+
+    {% else %}
+
+        <span class="text-muted">
+            No ratings yet.
+        </span>
+
+    {% endif %}
+
+</div>
+
+            <hr>
+
+            {% if profile._id|string == session["user_id"] %}
+
+<p>
+    <strong>Email:</strong>
+    {{ profile.email }}
+</p>
+
+{% elif connected %}
+
+<p>
+    <strong>Email:</strong>
+    {{ profile.email }}
+</p>
+
+{% else %}
+
+<p class="text-muted">
+    Email hidden until connection is accepted.
+</p>
+
+{% endif %}
+
+            <hr>
+
+            <h4>Skills Offered</h4>
+
+            <ul>
+
+                {% for skill in profile.skills_offer %}
+
+                    <li>{{ skill }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+            <h4>Skills Needed</h4>
+
+            <ul>
+
+                {% for skill in profile.skills_need %}
+
+                    <li>{{ skill }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+            <hr>
+
+            {% if profile._id|string == session["user_id"] %}
+
+                <!-- Viewing your own profile: don't show anything -->
+{% elif connected %}
+
+    <span class="badge bg-success">
+        Connected
+    </span>
+
+    <a
+        href="{{ url_for('main.chat', user_id=profile._id) }}"
+        class="btn btn-success ms-2"
+    >
+
+        <i class="fa-solid fa-message me-1"></i>
+
+        Message
+
+    </a>
+
+    <a
+        href="{{ url_for(
+            'main.report_user',
+            user_id=profile._id
+        ) }}"
+        class="btn btn-outline-danger ms-2"
+    >
+
+        <i class="fa-solid fa-flag me-1"></i>
+
+        Report
+
+    </a>
+
+{% elif already_sent %}
+
+                <span class="badge bg-warning text-dark">
+                    Request Sent
+                </span>
+
+            {% elif incoming_request %}
+
+                <span class="badge bg-info">
+                    This user has already sent you a request
+                </span>
+
+            {% else %}
+
+                <form
+    action="{{ url_for('main.send_request') }}"
+    method="POST"
+    data-loading-text="Sending Request..."
+>
+
+                    <input
+                        type="hidden"
+                        name="receiver_id"
+                        value="{{ profile._id }}">
+
+                    <button class="btn btn-primary">
+                        Send Skill Swap Request
+                    </button>
+
+                </form>
+
+            {% endif %}
+
+
+<!-- ================================= -->
+<!-- Report User -->
+<!-- ================================= -->
+
+{% if not is_own_profile and not profile.get("is_admin", false) %}
+
+    <a
+        href="{{ url_for(
+            'main.report_user',
+            user_id=profile._id
+        ) }}"
+        class="btn btn-outline-danger mt-3"
+    >
+
+        <i class="fa-solid fa-flag me-1"></i>
+
+        Report User
+
+    </a>
+
+{% endif %}
+
+
+<br>
+
+<hr class="my-4">
+
+<!-- ================================= -->
+<!-- Reviews -->
+<!-- ================================= -->
+
+<h4 class="mb-3">
+
+    <i class="fa-solid fa-comments me-2"></i>
+
+    Reviews
+
+</h4>
+
+
+{% if reviews %}
+
+    {% for review in reviews %}
+
+        <div class="card mb-3 shadow-sm">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <strong>
+                            {% if review.rating == 5 %}
+                                ⭐⭐⭐⭐⭐
+                            {% elif review.rating == 4 %}
+                                ⭐⭐⭐⭐
+                            {% elif review.rating == 3 %}
+                                ⭐⭐⭐
+                            {% elif review.rating == 2 %}
+                                ⭐⭐
+                            {% else %}
+                                ⭐
+                            {% endif %}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                {% if review.review %}
+
+                    <p class="mt-2 mb-1">
+                        "{{ review.review }}"
+                    </p>
+
+                {% endif %}
+
+                <small class="text-muted">
+
+                    {{ review.created_at.strftime("%d %B %Y") }}
+
+                </small>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+{% else %}
+
+    <div class="empty-state">
+
+        <div class="empty-state-icon">
+
+            ⭐
+
+        </div>
+
+        <div class="empty-state-title">
+
+            No Reviews Yet
+
+        </div>
+
+        <p class="empty-state-text">
+
+            Reviews from completed skill swaps
+            will appear here.
+
+        </p>
+
+    </div>
+
+{% endif %}
+
+            <a href="{{ url_for('main.browse') }}"
+               class="btn btn-secondary">
+
+                ← Back to Browse
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

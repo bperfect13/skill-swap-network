@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "6a92eacb2e9cb374eb507410"
+  },
+  "user1_id": "6a92eaaf2e9cb374eb50740e",
+  "user2_id": "6a50e730ff4ffaaef39ad021",
+  "user1_name": "Sam",
+  "user2_name": "joel",
+  "status": "active",
+  "created_at": {
+    "$date": "2026-08-29T14:20:59.284Z"
+  },
+  "completed_at": null
+}]

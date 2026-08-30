@@ -1,0 +1,916 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="card-body p-5">
+
+            <h2 class="text-center mb-4">
+
+                <i class="fa-solid fa-user-pen me-2"></i>
+
+                Edit Profile
+
+            </h2>
+
+            <!-- Alert -->
+
+            <div
+                id="formAlert"
+                class="alert alert-danger d-none"
+                role="alert">
+
+                <i class="fa-solid fa-circle-exclamation me-2"></i>
+
+                Please fill all the required details correctly.
+
+            </div>
+
+            <form
+                action="{{ url_for('main.edit_profile') }}"
+                method="POST"
+                enctype="multipart/form-data"
+                class="needs-validation"
+                novalidate>
+
+                <!-- =============================== -->
+                <!-- Profile Picture -->
+                <!-- =============================== -->
+
+                <div class="text-center mb-5">
+
+                    <img
+
+                        id="preview-image"
+
+                        src="{{ url_for('static', filename='uploads/profile_pictures/' + user.get('profile_picture','default.png')) }}"
+
+                        class="rounded-circle shadow"
+
+                        style="width:180px;
+                               height:180px;
+                               object-fit:cover;
+                               border:5px solid #0d6efd;">
+
+                    <br><br>
+
+                    <label class="btn btn-outline-primary">
+
+                        <i class="fa-solid fa-camera me-2"></i>
+
+                        Change Profile Picture
+
+                        <input
+
+                            type="file"
+
+                            id="profile_picture"
+
+                            name="profile_picture"
+
+                            accept="image/*"
+
+                            hidden>
+
+                    </label>
+
+                    <div
+
+                        id="file-name"
+
+                        class="text-muted mt-2">
+
+                        No file selected
+
+                    </div>
+
+                </div>
+
+                <!-- =============================== -->
+                <!-- Personal Information -->
+                <!-- =============================== -->
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Full Name
+
+                        </label>
+
+                        <input
+
+                            type="text"
+
+                            class="form-control"
+
+                            name="name"
+
+                            value="{{ user.name }}"
+
+                            required>
+
+                        <div class="invalid-feedback">
+
+                            Name is required.
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Email Address
+
+                        </label>
+
+                        <input
+
+                            type="email"
+
+                            class="form-control"
+
+                            name="email"
+
+                            value="{{ user.email }}"
+
+                            required>
+
+                        <div class="invalid-feedback">
+
+                            Please enter a valid email address.
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Phone Number
+
+                        </label>
+
+                        <input
+
+                            type="tel"
+
+                            class="form-control"
+
+                            name="phone"
+
+                            value="{{ user.phone }}"
+
+                            maxlength="10"
+
+                            pattern="[0-9]{10}"
+
+                            required
+
+                            oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+
+                        <div class="invalid-feedback">
+
+                            Please enter a valid 10-digit phone number.
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Location
+
+                        </label>
+
+                        <input
+
+                            type="text"
+
+                            class="form-control"
+
+                            name="location"
+
+                            value="{{ user.location }}"
+
+                            required>
+
+                        <div class="invalid-feedback">
+
+                            Location is required.
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Profession
+
+                        </label>
+
+                        <input
+
+                            type="text"
+
+                            class="form-control"
+
+                            name="profession"
+
+                            value="{{ user.profession }}"
+
+                            required>
+
+                        <div class="invalid-feedback">
+
+                            Profession is required.
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            LinkedIn Profile
+
+                        </label>
+
+                        <input
+
+                            type="url"
+
+                            class="form-control"
+
+                            name="linkedin"
+
+                            value="{{ user.linkedin }}"
+
+                            required>
+
+                        <div class="invalid-feedback">
+
+                            Please enter your LinkedIn profile URL.
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            GitHub Profile
+
+                        </label>
+
+                        <input
+
+                            type="url"
+
+                            class="form-control"
+
+                            name="github"
+
+                            value="{{ user.github }}"
+
+                            required>
+
+                        <div class="invalid-feedback">
+
+                            Please enter your GitHub profile URL.
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Portfolio Website
+
+                        </label>
+
+                        <input
+
+                            type="url"
+
+                            class="form-control"
+
+                            name="portfolio"
+
+                            value="{{ user.portfolio }}"
+
+                            required>
+
+                        <div class="invalid-feedback">
+
+                            Please enter your Portfolio URL.
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 mb-4">
+
+                        <label class="form-label">
+
+                            About Me
+
+                        </label>
+
+                        <textarea
+
+                            class="form-control"
+
+                            name="bio"
+
+                            rows="5"
+
+                            required>{{ user.bio }}</textarea>
+
+                        <div class="invalid-feedback">
+
+                            Please write something about yourself.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <hr class="my-5">
+
+<!-- ========================================= -->
+<!-- Skills Management -->
+<!-- ========================================= -->
+
+<h3 class="text-center mb-5">
+
+    <i class="fa-solid fa-code me-2"></i>
+
+    Skills Management
+
+</h3>
+
+<div class="row">
+
+    <!-- ======================== -->
+    <!-- Skills I Offer -->
+    <!-- ======================== -->
+
+    <div class="col-lg-6 mb-4">
+
+        <div class="card shadow border-0 h-100">
+
+            <div class="card-body">
+
+                <h4 class="text-success">
+
+                    <i class="fa-solid fa-circle-check me-2"></i>
+
+                    Skills I Offer
+
+                </h4>
+
+                <hr>
+
+                <div
+                    id="offerSkillsList"
+                    class="mb-3">
+
+                </div>
+
+                <div class="input-group">
+
+                    <input
+
+                        type="text"
+
+                        id="offerInput"
+
+                        class="form-control"
+
+                        placeholder="Example : Python">
+
+                    <button
+
+                        type="button"
+
+                        id="addOfferSkill"
+
+                        class="btn btn-success">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ======================== -->
+    <!-- Skills I Need -->
+    <!-- ======================== -->
+
+    <div class="col-lg-6 mb-4">
+
+        <div class="card shadow border-0 h-100">
+
+            <div class="card-body">
+
+                <h4 class="text-primary">
+
+                    <i class="fa-solid fa-bullseye me-2"></i>
+
+                    Skills I Need
+
+                </h4>
+
+                <hr>
+
+                <div
+                    id="needSkillsList"
+                    class="mb-3">
+
+                </div>
+
+                <div class="input-group">
+
+                    <input
+
+                        type="text"
+
+                        id="needInput"
+
+                        class="form-control"
+
+                        placeholder="Example : React">
+
+                    <button
+
+                        type="button"
+
+                        id="addNeedSkill"
+
+                        class="btn btn-primary">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- Hidden Inputs -->
+<!-- ========================================= -->
+
+<input
+    type="hidden"
+    id="skillsOfferHidden"
+    name="skills_offer"
+    value='{{ user.get("skills_offer", []) | tojson }}'>
+
+<input
+    type="hidden"
+    id="skillsNeedHidden"
+    name="skills_need"
+    value='{{ user.skills_need | tojson }}'>
+
+<hr class="my-5">
+
+<div class="text-center">
+
+    <button
+        type="submit"
+        class="btn btn-success btn-lg px-5">
+
+        <i class="fa-solid fa-floppy-disk me-2"></i>
+
+        Save Changes
+
+    </button>
+
+    <a
+
+        href="{{ url_for('main.my_profile') }}"
+
+        class="btn btn-secondary btn-lg px-5 ms-2">
+
+        Cancel
+
+    </a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<style>
+
+.skill-pill{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:10px 16px;
+
+    margin:6px;
+
+    border-radius:30px;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+.offer-pill{
+
+    background:#198754;
+
+}
+
+.need-pill{
+
+    background:#0d6efd;
+
+}
+
+.skill-pill button{
+
+    margin-left:10px;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+.skill-pill button:hover{
+
+    transform:scale(1.2);
+
+}
+
+</style>
+
+<script>
+
+const fileInput =
+document.getElementById("profile_picture");
+
+const previewImage =
+document.getElementById("preview-image");
+
+fileInput.addEventListener("change", function () {
+
+    if (this.files.length > 0) {
+
+        previewImage.src =
+            URL.createObjectURL(this.files[0]);
+
+    }
+
+}); 
+
+</script>
+
+<script>
+
+/* ===========================
+   Skills Arrays
+=========================== */
+
+let offerSkills =
+    JSON.parse(
+        document.getElementById("skillsOfferHidden").value || "[]"
+    );
+
+let needSkills =
+    JSON.parse(
+        document.getElementById("skillsNeedHidden").value || "[]"
+    );
+/* ===========================
+   HTML Containers
+=========================== */
+
+const offerList =
+document.getElementById("offerSkillsList");
+
+const needList =
+document.getElementById("needSkillsList");
+
+const offerInput =
+document.getElementById("offerInput");
+
+const needInput =
+document.getElementById("needInput");
+
+const offerHidden =
+document.getElementById("skillsOfferHidden");
+
+const needHidden =
+document.getElementById("skillsNeedHidden");
+
+const addOfferBtn =
+document.getElementById("addOfferSkill");
+
+const addNeedBtn =
+document.getElementById("addNeedSkill");
+
+/* ===========================
+   Render Offer Skills
+=========================== */
+
+function renderOfferSkills(){
+
+    offerList.innerHTML = "";
+
+    offerSkills.forEach((skill,index)=>{
+
+        offerList.innerHTML += `
+
+        <span class="skill-pill offer-pill">
+
+            ${skill}
+
+            <button
+                type="button"
+                onclick="removeOfferSkill(${index})">
+
+                ×
+
+            </button>
+
+        </span>
+
+        `;
+
+    });
+
+}
+
+/* ===========================
+   Render Need Skills
+=========================== */
+
+function renderNeedSkills(){
+
+    needList.innerHTML = "";
+
+    needSkills.forEach((skill,index)=>{
+
+        needList.innerHTML += `
+
+        <span class="skill-pill need-pill">
+
+            ${skill}
+
+            <button
+                type="button"
+                onclick="removeNeedSkill(${index})">
+
+                ×
+
+            </button>
+
+        </span>
+
+        `;
+
+    });
+
+}
+
+/* ===========================
+   Update Hidden Inputs
+=========================== */
+
+function updateHiddenInputs(){
+
+    offerHidden.value =
+        JSON.stringify(offerSkills);
+
+    needHidden.value =
+        JSON.stringify(needSkills);
+
+}
+
+/* ===========================
+   Refresh Everything
+=========================== */
+
+function refreshSkills(){
+
+    renderOfferSkills();
+
+    renderNeedSkills();
+
+    updateHiddenInputs();
+
+}
+
+/* ===========================
+   Load Existing Skills
+=========================== */
+
+refreshSkills();
+
+/* ===========================
+   Add Offer Skill
+=========================== */
+
+function addOfferSkill(){
+
+    let skill = offerInput.value.trim();
+
+    if(skill === ""){
+
+        alert("Please enter a skill.");
+
+        offerInput.focus();
+
+        return;
+
+    }
+
+    if(offerSkills.some(s => s.toLowerCase() === skill.toLowerCase())){
+
+        alert("This skill already exists.");
+
+        offerInput.focus();
+
+        return;
+
+    }
+
+    offerSkills.push(skill);
+
+    offerInput.value = "";
+
+    refreshSkills();
+
+    offerInput.focus();
+
+}
+
+/* ===========================
+   Add Need Skill
+=========================== */
+
+function addNeedSkill(){
+
+    let skill = needInput.value.trim();
+
+    if(skill === ""){
+
+        alert("Please enter a skill.");
+
+        needInput.focus();
+
+        return;
+
+    }
+
+    if(needSkills.some(s => s.toLowerCase() === skill.toLowerCase())){
+
+        alert("This skill already exists.");
+
+        needInput.focus();
+
+        return;
+
+    }
+
+    needSkills.push(skill);
+
+    needInput.value = "";
+
+    refreshSkills();
+
+    needInput.focus();
+
+}
+
+/* ===========================
+   Remove Offer Skill
+=========================== */
+
+function removeOfferSkill(index){
+
+    offerSkills.splice(index,1);
+
+    refreshSkills();
+
+}
+
+/* ===========================
+   Remove Need Skill
+=========================== */
+
+function removeNeedSkill(index){
+
+    needSkills.splice(index,1);
+
+    refreshSkills();
+
+}
+
+/* ===========================
+   Button Click Events
+=========================== */
+
+addOfferBtn.addEventListener("click",addOfferSkill);
+
+addNeedBtn.addEventListener("click",addNeedSkill);
+
+/* ===========================
+   Press Enter
+=========================== */
+
+offerInput.addEventListener("keypress",function(e){
+
+    if(e.key==="Enter"){
+
+        e.preventDefault();
+
+        addOfferSkill();
+
+    }
+
+});
+
+needInput.addEventListener("keypress",function(e){
+
+    if(e.key==="Enter"){
+
+        e.preventDefault();
+
+        addNeedSkill();
+
+    }
+
+});
+
+window.removeOfferSkill = removeOfferSkill;
+
+window.removeNeedSkill = removeNeedSkill;
+
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

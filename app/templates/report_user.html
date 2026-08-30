@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}
+Report User
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-7">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-body p-4">
+
+                    <h3 class="fw-bold mb-2">
+
+                        <i
+                            class="fa-solid fa-flag text-danger me-2"
+                        ></i>
+
+                        Report User
+
+                    </h3>
+
+                    <p class="text-muted mb-4">
+
+                        You are reporting:
+
+                        <strong>
+                            {{ reported_user.name }}
+                        </strong>
+
+                    </p>
+
+
+                    <!-- ============================== -->
+                    <!-- Report Form -->
+                    <!-- ============================== -->
+
+                    <form
+    method="POST"
+    action="{{ url_for(
+        'main.report_user',
+        user_id=reported_user._id
+    ) }}"
+    data-loading-text="Submitting Report..."
+>
+
+                        <!-- Reason -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="reason"
+                                class="form-label fw-bold"
+                            >
+
+                                Reason
+
+                            </label>
+
+                            <select
+                                name="reason"
+                                id="reason"
+                                class="form-select"
+                                required
+                            >
+
+                                <option value="">
+                                    Select a reason
+                                </option>
+
+                                <option value="Spam">
+                                    Spam
+                                </option>
+
+                                <option value="Harassment">
+                                    Harassment
+                                </option>
+
+                                <option value="Fake Profile">
+                                    Fake Profile
+                                </option>
+
+                                <option value="Inappropriate Content">
+                                    Inappropriate Content
+                                </option>
+
+                                <option value="Scam">
+                                    Scam
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Details -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="details"
+                                class="form-label fw-bold"
+                            >
+
+                                Details
+
+                            </label>
+
+                            <textarea
+                                name="details"
+                                id="details"
+                                class="form-control"
+                                rows="5"
+                                placeholder="Please explain why you are reporting this user..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <!-- Buttons -->
+
+                        <div class="d-flex gap-2">
+
+                            <button
+                                type="submit"
+                                class="btn btn-danger"
+                            >
+
+                                <i
+                                    class="fa-solid fa-flag me-1"
+                                ></i>
+
+                                Submit Report
+
+                            </button>
+
+
+                            <a
+                                href="{{ url_for(
+                                    'main.profile',
+                                    user_id=reported_user._id
+                                ) }}"
+                                class="btn btn-secondary"
+                            >
+
+                                Cancel
+
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

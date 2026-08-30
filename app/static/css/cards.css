@@ -1,0 +1,79 @@
+/* ===========================
+   Features Section
+=========================== */
+
+.features-section{
+
+    background:#F8FAFC;
+
+    padding:100px 0;
+
+}
+
+.feature-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    height:100%;
+
+    transition:.4s;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 20px 40px rgba(37,99,235,.18);
+
+}
+
+.feature-icon{
+
+    width:80px;
+
+    height:80px;
+
+    background:#2563EB;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    margin:auto;
+
+    margin-bottom:25px;
+
+    font-size:30px;
+
+}
+
+.feature-card h4{
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+.feature-card p{
+
+    color:#64748B;
+
+    line-height:1.8;
+
+}

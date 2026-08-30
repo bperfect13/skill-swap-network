@@ -1,0 +1,430 @@
+{% extends "base.html" %}
+
+{% block title %}
+Notifications
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- ================================= -->
+    <!-- Notifications Header -->
+    <!-- ================================= -->
+
+    <h2 class="mb-4">
+
+        <i class="fa-solid fa-bell me-2"></i>
+
+        Notifications
+
+    </h2>
+
+
+    <!-- ================================= -->
+    <!-- Notifications List -->
+    <!-- ================================= -->
+
+    {% if notifications %}
+
+        {% for notification in notifications %}
+
+            <!-- ================================= -->
+            <!-- MESSAGE NOTIFICATION -->
+            <!-- ================================= -->
+
+            {% if notification.type == "message" %}
+
+                <a
+                    href="{{ url_for(
+                        'main.chat',
+                        user_id=notification.related_user_id
+                    ) }}"
+                    class="text-decoration-none"
+                >
+
+                    <div
+                        class="card shadow-sm mb-3 border notification-card"
+                        style="
+                            border-radius: 8px;
+                            cursor: pointer;
+                        "
+                    >
+
+                        <div class="card-body">
+
+                            <div class="d-flex align-items-start">
+
+                                <!-- Icon -->
+
+                                <div class="me-3">
+
+                                    <i
+                                        class="fa-solid fa-message text-primary"
+                                        style="font-size:20px;"
+                                    ></i>
+
+                                </div>
+
+
+                                <!-- Content -->
+
+                                <div class="flex-grow-1">
+
+                                    <div class="notification-message">
+
+                                        {{ notification.message }}
+
+                                    </div>
+
+
+                                    <div
+                                        class="notification-time mt-1"
+                                        data-time="{{ notification.created_at.isoformat() }}"
+                                    >
+
+                                        Just now
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+            <!-- ================================= -->
+            <!-- NORMAL NOTIFICATION -->
+            <!-- ================================= -->
+
+            {% else %}
+
+                <div
+                    class="card shadow-sm mb-3 border"
+                    style="border-radius:8px;"
+                >
+
+                    <div class="card-body">
+
+                        <div class="d-flex align-items-start">
+
+                            <!-- Icon -->
+
+                            <div class="me-3">
+
+                                {% if notification.type == "request" %}
+
+                                    <i
+                                        class="fa-solid fa-user-plus text-primary"
+                                        style="font-size:20px;"
+                                    ></i>
+
+                                {% elif notification.type == "accepted" %}
+
+                                    <i
+                                        class="fa-solid fa-user-check text-success"
+                                        style="font-size:20px;"
+                                    ></i>
+
+                                {% else %}
+
+                                    <i
+                                        class="fa-solid fa-bell text-primary"
+                                        style="font-size:20px;"
+                                    ></i>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <!-- Content -->
+
+                            <div class="flex-grow-1">
+
+                                <div class="notification-message">
+
+                                    {{ notification.message }}
+
+                                </div>
+
+
+                                <div
+                                    class="notification-time mt-1"
+                                    data-time="{{ notification.created_at.isoformat() }}"
+                                >
+
+                                    Just now
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+        {% endfor %}
+
+
+    <!-- ================================= -->
+    <!-- No Notifications -->
+    <!-- ================================= -->
+
+    {% else %}
+
+        <div class="empty-state">
+
+            <div class="empty-state-icon">
+
+                🔔
+
+            </div>
+
+
+            <div class="empty-state-title">
+
+                No Notifications Yet
+
+            </div>
+
+
+            <p class="empty-state-text">
+
+                You're all caught up!
+                New requests, messages and updates
+                will appear here.
+
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+
+<!-- ================================= -->
+<!-- Notification Relative Time -->
+<!-- ================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    function updateNotificationTimes() {
+
+        const notificationTimes =
+            document.querySelectorAll(
+                ".notification-time"
+            );
+
+
+        notificationTimes.forEach(function (element) {
+
+            const timeString =
+                element.getAttribute(
+                    "data-time"
+                );
+
+
+            if (!timeString) {
+                return;
+            }
+
+
+            const notificationTime =
+                new Date(timeString);
+
+
+            const now =
+                new Date();
+
+
+            const difference =
+                Math.floor(
+                    (now - notificationTime) / 1000
+                );
+
+
+            let text;
+
+
+            /* ==========================
+               Seconds
+               ========================== */
+
+            if (difference < 60) {
+
+                text = "Just now";
+
+            }
+
+
+            /* ==========================
+               Minutes
+               ========================== */
+
+            else if (difference < 3600) {
+
+                const minutes =
+                    Math.floor(
+                        difference / 60
+                    );
+
+
+                text =
+                    minutes === 1
+                        ? "1 minute ago"
+                        : minutes + " minutes ago";
+
+            }
+
+
+            /* ==========================
+               Hours
+               ========================== */
+
+            else if (difference < 86400) {
+
+                const hours =
+                    Math.floor(
+                        difference / 3600
+                    );
+
+
+                text =
+                    hours === 1
+                        ? "1 hour ago"
+                        : hours + " hours ago";
+
+            }
+
+
+            /* ==========================
+               Days
+               ========================== */
+
+            else if (difference < 604800) {
+
+                const days =
+                    Math.floor(
+                        difference / 86400
+                    );
+
+
+                text =
+                    days === 1
+                        ? "Yesterday"
+                        : days + " days ago";
+
+            }
+
+
+            /* ==========================
+               Weeks
+               ========================== */
+
+            else {
+
+                const weeks =
+                    Math.floor(
+                        difference / 604800
+                    );
+
+
+                text =
+                    weeks === 1
+                        ? "1 week ago"
+                        : weeks + " weeks ago";
+
+            }
+
+
+            element.textContent = text;
+
+        });
+
+    }
+
+
+    updateNotificationTimes();
+
+
+    setInterval(
+        updateNotificationTimes,
+        30000
+    );
+
+});
+
+</script>
+
+
+<!-- ================================= -->
+<!-- Notification Styling -->
+<!-- ================================= -->
+
+<style>
+
+/* =========================================
+   Notification Text
+   ========================================= */
+
+.notification-message {
+
+    font-size: 15px;
+
+    color: #172554;
+
+    font-weight: 400;
+
+}
+
+
+.notification-time {
+
+    font-size: 13px;
+
+    color: #9ca3af;
+
+    font-weight: 400;
+
+}
+
+
+/* =========================================
+   Message Notification Hover
+   ========================================= */
+
+.notification-card {
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.notification-card:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.08) !important;
+
+}
+
+</style>
+
+
+{% endblock %}

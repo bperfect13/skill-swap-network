@@ -1,0 +1,441 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <!-- Left Side -->
+
+            <div class="col-lg-6">
+
+                <h1>
+                    Exchange Skills.
+                    <br>
+                    Build Your Future.
+                </h1>
+
+                <p>
+                    Join India's growing skill-sharing community.
+                    Teach what you know, learn what you don't,
+                    and build meaningful professional connections
+                    through skill exchange.
+                </p>
+
+                <div class="hero-buttons">
+
+    {% if session.get("user_id") %}
+
+        <a href="{{ url_for('main.dashboard') }}"
+           class="btn btn-register">
+
+            Go to Dashboard
+
+        </a>
+
+        <a href="#"
+           class="btn btn-login">
+
+            Browse Skills
+
+        </a>
+
+    {% else %}
+
+        <a href="{{ url_for('main.register') }}"
+           class="btn btn-register">
+
+            Get Started
+
+        </a>
+
+        <a href="#"
+           class="btn btn-login">
+
+            Browse Skills
+
+        </a>
+
+    {% endif %}
+
+</div>
+
+            </div>
+
+            <!-- Right Side -->
+
+            <div class="col-lg-6 text-center">
+
+                <img
+                    src="{{ url_for('static', filename='images/hero.jpg') }}"
+                    class="hero-image img-fluid"
+                    alt="Skill Swap Network">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= Statistics ================= -->
+
+<section class="stats-section">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-4">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="fa-solid fa-users"></i>
+
+                    </div>
+
+                    <h2>{{ total_users }}</h2>
+
+                    <p>Active Users</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="fa-solid fa-book-open"></i>
+
+                    </div>
+
+                    <h2>7500+</h2>
+
+                    <p>Skills Shared</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="fa-solid fa-handshake"></i>
+
+                    </div>
+
+                    <h2>1500+</h2>
+
+                    <p>Successful Swaps</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+
+                How Skill Swap Works
+
+            </h2>
+
+            <p class="text-muted">
+
+                Exchange knowledge in five simple steps.
+
+            </p>
+
+        </div>
+
+        <div class="row text-center">
+
+            <div class="col">
+
+                <h1>1️⃣</h1>
+
+                <h5>Create Account</h5>
+
+            </div>
+
+            <div class="col">
+
+                <h1>2️⃣</h1>
+
+                <h5>Add Skills</h5>
+
+            </div>
+
+            <div class="col">
+
+                <h1>3️⃣</h1>
+
+                <h5>Find Matches</h5>
+
+            </div>
+
+            <div class="col">
+
+                <h1>4️⃣</h1>
+
+                <h5>Send Request</h5>
+
+            </div>
+
+            <div class="col">
+
+                <h1>5️⃣</h1>
+
+                <h5>Start Learning</h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="features-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+                Why Choose SkillSwap?
+            </h2>
+
+            <p class="text-muted">
+
+                Discover smarter ways to exchange knowledge and grow together.
+
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-brain"></i>
+
+                    </div>
+
+                    <h4>Smart Matching</h4>
+
+                    <p>
+
+                        Our intelligent matching algorithm recommends users
+                        based on the skills you offer and the skills you want to learn.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-user-shield"></i>
+
+                    </div>
+
+                    <h4>Secure Requests</h4>
+
+                    <p>
+
+                        Contact information remains hidden until a request
+                        is accepted by both users.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-graduation-cap"></i>
+
+                    </div>
+
+                    <h4>Learn & Teach</h4>
+
+                    <p>
+
+                        Share your expertise while learning new skills
+                        from experienced community members.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+                    <h4>Verified Profiles</h4>
+
+                    <p>
+
+                        Build trust through verified profiles,
+                        transparent requests and successful exchanges.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= POPULAR SKILLS ================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <h2 class="text-center fw-bold mb-5">
+
+            Popular Skill Categories
+
+        </h2>
+
+        <div class="row">
+
+            <div class="col-lg-3 col-md-6 mb-4">
+
+                <div class="stat-card text-center">
+
+                    <div style="font-size:55px;">💻</div>
+
+                    <h4>Programming</h4>
+
+                    <p class="text-muted">
+
+                        Python, Java, C++, Web Development
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+
+                <div class="stat-card text-center">
+
+                    <div style="font-size:55px;">🎨</div>
+
+                    <h4>Graphic Design</h4>
+
+                    <p class="text-muted">
+
+                        Photoshop, Illustrator, Canva
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+
+                <div class="stat-card text-center">
+
+                    <div style="font-size:55px;">📷</div>
+
+                    <h4>Photography</h4>
+
+                    <p class="text-muted">
+
+                        DSLR, Editing, Lightroom
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+
+                <div class="stat-card text-center">
+
+                    <div style="font-size:55px;">📈</div>
+
+                    <h4>Digital Marketing</h4>
+
+                    <p class="text-muted">
+
+                        SEO, Social Media, Advertising
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

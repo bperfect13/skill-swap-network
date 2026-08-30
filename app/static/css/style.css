@@ -1,0 +1,409 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#F8FAFC;
+
+    color:#0F172A;
+
+}
+
+/* ============================================================
+   SKILLSWAP - SUBTLE UI ANIMATIONS
+   ============================================================ */
+
+
+/* ============================================================
+   GLOBAL SMOOTH TRANSITIONS
+   ============================================================ */
+
+a,
+button,
+.btn,
+.card,
+.nav-link,
+.dropdown-item,
+.form-control,
+.form-select {
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+/* ============================================================
+   CARD ENTRANCE ANIMATION
+   ============================================================ */
+
+.card {
+    animation: cardFadeIn 0.45s ease both;
+}
+
+@keyframes cardFadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ============================================================
+   CARD HOVER
+   ============================================================ */
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ============================================================
+   BUTTON HOVER
+   ============================================================ */
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   BUTTON ACTIVE / CLICK
+   ============================================================ */
+
+.btn:active {
+    transform: translateY(0);
+}
+
+
+/* ============================================================
+   NAVBAR LINK HOVER
+   ============================================================ */
+
+.navbar-custom .nav-link {
+    position: relative;
+}
+
+
+/* Underline animation */
+
+.navbar-custom .nav-link::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 10px;
+
+    right: 10px;
+
+    bottom: 4px;
+
+    height: 2px;
+
+    transform: scaleX(0);
+
+    transform-origin: center;
+
+    transition: transform 0.2s ease;
+
+}
+
+
+/* Show underline */
+
+.navbar-custom .nav-link:hover::after {
+
+    transform: scaleX(1);
+
+}
+
+
+/* ============================================================
+   NAVBAR BRAND
+   ============================================================ */
+
+.navbar-custom .navbar-brand:hover {
+
+    transform: translateY(-1px);
+
+}
+
+
+/* ============================================================
+   DROPDOWN ITEMS
+   ============================================================ */
+
+.navbar-custom .dropdown-item:hover {
+
+    transform: translateX(3px);
+
+}
+
+
+/* ============================================================
+   PROFILE AVATAR
+   ============================================================ */
+
+.profile-avatar {
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+.profile-avatar:hover {
+
+    transform: scale(1.05);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.15);
+
+}
+
+
+/* ============================================================
+   NOTIFICATION CARDS
+   ============================================================ */
+
+.notification-card {
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+.notification-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.08) !important;
+
+}
+
+
+/* ============================================================
+   MESSAGE / CONVERSATION CARDS
+   ============================================================ */
+
+.conversation-card {
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+.conversation-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.08);
+
+}
+
+
+/* ============================================================
+   CHAT DATE SEPARATOR
+   ============================================================ */
+
+.chat-date-separator span {
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+.chat-date-separator:hover span {
+
+    transform: scale(1.03);
+
+}
+
+
+/* ============================================================
+   CHAT MESSAGE BUBBLES
+   ============================================================ */
+
+.message-bubble {
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+.message-bubble:hover {
+
+    transform: translateY(-1px);
+
+}
+
+
+/* ============================================================
+   PROFILE ACTION BUTTONS
+   ============================================================ */
+
+.profile-actions .btn:hover {
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ============================================================
+   FORM INPUTS
+   ============================================================ */
+
+.form-control:focus,
+.form-select:focus {
+
+    transform: translateY(-1px);
+
+}
+
+
+/* ============================================================
+   ADMIN TABLE ROWS
+   ============================================================ */
+
+.table tbody tr {
+
+    transition:
+        background-color 0.2s ease;
+
+}
+
+.table tbody tr:hover {
+
+    background-color: rgba(0, 0, 0, 0.025);
+
+}
+
+
+/* ============================================================
+   IMAGE HOVER
+   ============================================================ */
+
+img {
+
+    transition:
+        transform 0.2s ease;
+
+}
+
+
+/* ============================================================
+   RESPECT REDUCED-MOTION SETTINGS
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
+
+    }
+
+}
+
+/* ============================================================
+   LOADING SPINNER
+   ============================================================ */
+
+.loading-spinner {
+    width: 15px;
+    height: 15px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: -2px;
+    margin-right: 7px;
+    animation: buttonSpinner 0.7s linear infinite;
+}
+
+@keyframes buttonSpinner {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+/* ============================================================
+   SKILLSWAP - EMPTY STATES
+   ============================================================ */
+
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.empty-state-icon {
+    width: 85px;
+    height: 85px;
+
+    margin: 0 auto 20px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    font-size: 38px;
+}
+
+.empty-state-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #172554;
+}
+
+.empty-state-text {
+    color: #64748b;
+    max-width: 430px;
+    margin: 0 auto 22px auto;
+    line-height: 1.6;
+}
+
+.empty-state .btn {
+    min-width: 150px;
+}

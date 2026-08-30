@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Skill Swaps
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h2 class="mb-4">
+
+        <i class="fa-solid fa-handshake me-2"></i>
+
+        My Skill Swaps
+
+    </h2>
+
+
+    {% if swaps %}
+
+        {% for swap in swaps %}
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h5>
+                        Skill Swap with
+                        <strong>
+                            {{ swap.other_user_name }}
+                        </strong>
+                    </h5>
+
+
+                    {% if swap.status == "active" %}
+
+                        <span class="badge bg-primary">
+                            Active
+                        </span>
+
+                        <form
+    action="{{ url_for(
+        'main.complete_swap',
+        swap_id=swap._id
+    ) }}"
+    method="POST"
+    class="mt-3"
+    data-loading-text="Completing..."
+>
+
+                            <button
+                                class="btn btn-success"
+                            >
+
+                                <i class="fa-solid fa-check me-1"></i>
+
+                                Mark Swap as Completed
+
+                            </button>
+
+                        </form>
+
+
+                    {% elif swap.status == "completed" %}
+
+                        <span class="badge bg-success">
+
+                            Completed
+
+                        </span>
+
+
+                        <div class="mt-3">
+
+                            <a
+                                href="{{ url_for(
+                                    'main.rate_swap',
+                                    swap_id=swap._id
+                                ) }}"
+                                class="btn btn-warning"
+                            >
+
+                                <i class="fa-solid fa-star me-1"></i>
+
+                                Rate & Review
+
+                            </a>
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+    <div class="empty-state">
+
+        <div class="empty-state-icon">
+
+            🤝
+
+        </div>
+
+        <div class="empty-state-title">
+
+            No Skill Swaps Yet
+
+        </div>
+
+        <p class="empty-state-text">
+
+            Connect with someone and start
+            your first skill swap.
+
+        </p>
+
+        <a
+            href="{{ url_for('main.browse') }}"
+            class="btn btn-primary"
+        >
+
+            <i class="fa-solid fa-users me-1"></i>
+
+            Find People
+
+        </a>
+
+    </div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

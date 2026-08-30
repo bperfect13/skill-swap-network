@@ -1,0 +1,564 @@
+{% extends "base.html" %}
+
+{% block title %}
+Chat with {{ other_user.name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="chat-card">
+
+                <div class="chat-header">
+
+                    <div class="d-flex align-items-center">
+
+                        <img
+                            src="{{ url_for(
+                                'static',
+                                filename='uploads/profile_pictures/' +
+                                other_user.get(
+                                    'profile_picture',
+                                    'default.png'
+                                )
+                            ) }}"
+                            class="rounded-circle me-3"
+                            style="
+                                width:50px;
+                                height:50px;
+                                object-fit:cover;
+                            "
+                            alt="{{ other_user.name }}"
+                        >
+
+                        <div>
+
+                            <h5 class="mb-0 text-white">
+                                {{ other_user.name }}
+                            </h5>
+
+                            <small class="text-white-50">
+                                {{ other_user.profession }}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div
+                    class="chat-messages"
+                    id="chatMessages"
+                >
+
+                    {% if messages %}
+
+                        {% for message in messages %}
+
+                            {% if message.show_unread_separator %}
+
+                                <div class="chat-unread-separator">
+
+                                    <span>
+
+                                        {{ unread_count }}
+
+                                        {{
+                                            "unread message"
+                                            if unread_count == 1
+                                            else "unread messages"
+                                        }}
+
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+                            {% if message.show_date_separator %}
+
+                                <div class="chat-date-separator">
+
+                                    <span>
+
+                                        {{ message.date_label }}
+
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+                            {% if message.sender_id|string == session["user_id"] %}
+
+                                <div class="message-row message-sent">
+
+                                    <div class="chat-bubble bubble-sent">
+
+                                        <div class="bubble-text">{{ message.message.strip() }}</div>
+
+                                        <div class="bubble-time">
+
+                                            {{ message.created_at.strftime(
+                                                "%I:%M %p"
+                                            ) }}
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            {% else %}
+
+                                <div class="message-row message-received">
+
+                                    <div class="chat-bubble bubble-received">
+
+                                        <div class="bubble-text">{{ message.message.strip() }}</div>
+
+                                        <div class="bubble-time">
+
+                                            {{ message.created_at.strftime(
+                                                "%I:%M %p"
+                                            ) }}
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="chat-empty">
+
+                            <div class="chat-empty-icon">
+                                💬
+                            </div>
+
+                            <div class="chat-empty-title">
+                                No Messages Yet
+                            </div>
+
+                            <p class="chat-empty-text">
+
+                                Start the conversation with
+                                {{ other_user.name }}.
+
+                            </p>
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+                {% if read_only %}
+
+                    <div class="chat-footer readonly-footer">
+
+                        <div class="readonly-text">
+
+                            <i
+                                class="fa-solid fa-circle-info me-1"
+                            ></i>
+
+                            Messages from the admin can be viewed here.
+                            You cannot reply to the admin.
+
+                        </div>
+
+                    </div>
+
+                {% else %}
+
+                    <div class="chat-footer">
+
+                        <form
+                            method="POST"
+                            action="{{ url_for(
+                                'main.send_message',
+                                receiver_id=other_user._id
+                            ) }}"
+                            data-loading-text="Sending..."
+                        >
+
+                            <div class="chat-input-row">
+
+                                <input
+                                    type="text"
+                                    name="message"
+                                    class="chat-input"
+                                    placeholder="Type a message..."
+                                    autocomplete="off"
+                                    required
+                                >
+
+                                <button
+                                    type="submit"
+                                    class="chat-send-btn"
+                                >
+
+                                    <i
+                                        class="fa-solid fa-paper-plane me-1"
+                                    ></i>
+
+                                    Send
+
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            <div class="mt-3">
+                <a href="{{ url_for('main.dashboard') }}" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-arrow-left me-1"></i>
+                    Back to Dashboard
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+.chat-card {
+    width: 100%;
+    background: #0f172a;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.chat-header {
+    background: #2563eb;
+    padding: 14px 18px;
+}
+
+.chat-messages {
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 16px;
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 7px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #111827;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 10px;
+}
+
+.message-row {
+    display: flex !important;
+    width: 100% !important;
+    margin: 0 0 10px 0 !important;
+    padding: 0 !important;
+}
+
+.message-sent {
+    justify-content: flex-end !important;
+}
+
+.message-received {
+    justify-content: flex-start !important;
+}
+
+.chat-bubble {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    width: auto !important;
+    max-width: 70% !important;
+    margin: 0 !important;
+    padding: 8px 12px !important;
+    box-sizing: border-box !important;
+    border-radius: 17px !important;
+    line-height: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    white-space: normal !important;
+    text-align: left !important;
+}
+
+.bubble-sent {
+    background: #2563eb;
+    color: #ffffff;
+    border-bottom-right-radius: 5px;
+}
+
+.bubble-received {
+    background: #334155;
+    color: #f8fafc;
+    border-bottom-left-radius: 5px;
+}
+
+.bubble-text {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+}
+
+.bubble-time {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 3px 0 0 0 !important;
+    padding: 0 !important;
+    font-size: 9px !important;
+    line-height: 1 !important;
+    text-align: right !important;
+    opacity: 0.7 !important;
+}
+
+.chat-date-separator {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 18px 0 14px 0;
+    line-height: normal;
+}
+
+.chat-date-separator span {
+    display: inline-block;
+    background: #1e293b;
+    color: #cbd5e1;
+    font-size: 11px;
+    padding: 6px 13px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.chat-unread-separator {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 18px 0;
+    line-height: normal;
+}
+
+.chat-unread-separator span {
+    display: inline-block;
+    background: #1d4ed8;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+.chat-empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: #cbd5e1;
+    line-height: normal;
+    margin: auto;
+    width: 100%;
+}
+
+.chat-empty-icon {
+    font-size: 45px;
+    margin-bottom: 12px;
+}
+
+.chat-empty-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.chat-empty-text {
+    font-size: 13px;
+    color: #94a3b8;
+    margin: 0;
+}
+
+.chat-footer {
+    background: #111827;
+    border-top: 1px solid #1f2937;
+    padding: 10px;
+    margin: 0;
+    height: auto;
+    min-height: 0;
+    box-sizing: border-box;
+}
+
+.chat-footer form {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.chat-input-row {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    min-height: 40px;
+}
+
+.chat-input {
+    flex: 1;
+    min-width: 0;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #334155;
+    border-right: none;
+    border-radius: 7px 0 0 7px;
+    background: #1e293b;
+    color: #f8fafc;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.chat-input::placeholder {
+    color: #94a3b8;
+}
+
+.chat-input:focus {
+    border-color: #3b82f6;
+}
+
+.chat-send-btn {
+    height: 40px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 0 7px 7px 0;
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.chat-send-btn:hover {
+    background: #1d4ed8;
+}
+
+.readonly-footer {
+    text-align: center;
+}
+
+.readonly-text {
+    color: #94a3b8;
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 3px 4px;
+}
+
+@media (max-width: 576px) {
+
+    .chat-messages {
+        height: 400px;
+        padding: 12px;
+    }
+
+    .chat-bubble {
+        display: inline-flex !important;
+        flex-direction: column !important;
+        width: auto !important;
+        max-width: 85% !important;
+        padding: 8px 11px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        text-align: left !important;
+    }
+
+    .bubble-text {
+        display: block !important;
+        width: auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 13px !important;
+        line-height: 1.35 !important;
+    }
+
+    .bubble-time {
+        display: block !important;
+        width: auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 3px 0 0 0 !important;
+        padding: 0 !important;
+        font-size: 8px !important;
+        line-height: 1 !important;
+        text-align: right !important;
+    }
+
+    .chat-footer {
+        padding: 8px !important;
+    }
+
+    .chat-send-btn {
+        padding: 0 11px !important;
+    }
+
+}
+
+</style>
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const chatMessages =
+            document.getElementById(
+                "chatMessages"
+            );
+
+        if (chatMessages) {
+
+            chatMessages.scrollTop =
+                chatMessages.scrollHeight;
+
+        }
+
+    }
+);
+
+</script>
+
+{% endblock %}
