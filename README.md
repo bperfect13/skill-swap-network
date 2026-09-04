@@ -69,7 +69,7 @@ MONGO_URI=mongodb://localhost:27017/skill_swap_network
 python run.py
 ```
 
-The app will be available at `http://127.0.0.1:5000`.
+The app will be available at `https://skill-swap-network.onrender.com/`.
 
 ## ☁️ Deployment
 
